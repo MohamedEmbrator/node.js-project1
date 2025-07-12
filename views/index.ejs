@@ -1,3 +1,34 @@
-    <%- include('./components/header') %>
-    <%- include('./components/navbar') %>
-    <%- include('./components/footer') %>
+<%- include('./components/header') %> <%- include('./components/navbar') %>
+
+<div class="container">
+    <form action="/" method="GET">
+        <select name="category" class="form-control">
+            <option value="all">All</option>
+            <option value="Clothes">Colthes</option>
+            <option value="Phones">Phones</option>
+            <option value="Watches">Watches</option>
+        </select>
+        <input type="submit" value="Filter" class="btn btn-primary">
+    </form>
+  <div class="row">
+    <% for (let product of products) { %>
+    <div class="col-lg-3 col-md-4 col-sm-12 p-4">
+      <div class="card" style="width: 18rem">
+        <img src="<%= product.image %>" class="card-img-top" alt="..." style="height: 200px"/>
+        <div class="card-body">
+          <h5 class="card-title"><a href="/product/<%= product._id %>"><%= product.name %></a></h5>
+          <p class="card-text">
+           $<%= product.price %>
+          </p>
+          <form action="/cart" method="POST">
+            <input type="number" name="amount" class="form-control mb-3">
+            <input type="submit" value="Add To Cart" class="btn btn-primary">
+          </form>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</div>
+
+<%- include('./components/footer') %>
