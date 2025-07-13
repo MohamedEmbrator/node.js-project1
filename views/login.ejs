@@ -1,0 +1,21 @@
+<%- include('./components/header') %> <%- include('./components/navbar') %>
+
+  <p class="container text-center">
+    <h3>Login</h3>
+    <form action="/login" method="post">
+      <input type="email" name="email" class="form-control mt-3" placeholder="email">
+      <input type="password" name="password" class="form-control mt-3" placeholder="password">
+      <input type="submit" value="Login" class="btn btn-primary mt-3">
+    </form>
+    <br>
+    <% if (authError) { %>
+    <p class="alert alert-danger">
+      <%= authError  %>
+    </p>
+    <% } %>
+    <div>
+      Don't have account? <a href="/signup">Create Account</a>
+    </div>
+  </div>
+
+<%- include('./components/footer') %>
